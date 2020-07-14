@@ -5,9 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Entities\" />
+    <Folder Include="Data\EntityFramework\Entities\" />
     <Folder Include="Data\EntityFramework\" />
-    <Folder Include="Data\Schema\" />
+    <Folder Include="Mapping\" />
+    <Folder Include="DomainFactories\" />
   </ItemGroup>
 
 </Project>
