@@ -2,7 +2,7 @@
 
 namespace VMS.Domain.Aggregates.VehicleAggregate
 {
-    public class Longitude : ValueObject
+    public sealed class Longitude : ValueObject
     {
     }
 }
