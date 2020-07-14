@@ -4,28 +4,28 @@ namespace VMS.Domain.Aggregates.VehicleAggregate
 {
     public class Kilometres : ValueObject
     {
-        private float kilometres = 0.0f;
+        private double kilometres = 0.0;
 
-        public Kilometres(float kilometres)
+        public Kilometres(double kilometres)
         {
-            if (kilometres < 0.0f) throw new DomainException("Mileage must not be a negative number");
+            if (kilometres < 0.0) throw new DomainException("Mileage must not be a negative number");
 
             this.kilometres = kilometres;
         }
 
-        public void UpdateMileage(float kilometres)
+        public void UpdateMileage(double kilometres)
         {
             if (kilometres < this.kilometres) throw new DomainException("The new mileage entered is smaller than the current mileage.");
 
             this.kilometres = kilometres;
         }
 
-        public static implicit operator float(Kilometres kilometres)
+        public static implicit operator double(Kilometres kilometres)
         {
             return kilometres.kilometres;
         }
 
-        public static implicit operator Kilometres(float kilometres)
+        public static implicit operator Kilometres(double kilometres)
         {
             return new Kilometres(kilometres);
         }
@@ -42,7 +42,7 @@ namespace VMS.Domain.Aggregates.VehicleAggregate
                 return true;
             }
 
-            return obj is float single ? single == kilometres : ((Kilometres)obj).kilometres == kilometres;
+            return obj is double single ? single == kilometres : ((Kilometres)obj).kilometres == kilometres;
         }
     }
 }

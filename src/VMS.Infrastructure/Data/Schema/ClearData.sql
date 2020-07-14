@@ -1,4 +1,6 @@
-﻿SET ANSI_NULLS ON
+﻿USE [VMS]
+
+SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
@@ -24,7 +26,6 @@ CREATE TABLE [dbo].[Vehicle](
 	[type] INT NOT NULL,
 	[mileage] FLOAT NOT NULL,
 	[deleted_dttm] DATETIME NULL,
-	[deleted_by] INT NULL,
 	CONSTRAINT [FK_Vehicle_ToVehicleType] FOREIGN KEY ([type]) REFERENCES [dbo].[VehicleType]([id]),
  CONSTRAINT [PK_Vehicle] PRIMARY KEY CLUSTERED 
 (

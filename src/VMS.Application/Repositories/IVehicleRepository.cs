@@ -1,6 +1,8 @@
-﻿namespace VMS.Application.Repositories
+﻿using VMS.Domain.Aggregates.VehicleAggregate;
+
+namespace VMS.Application.Repositories
 {
-    public interface IVehicleRepository
+    public interface IVehicleRepository : IRepository<Vehicle>
     {
     }
 }

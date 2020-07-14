@@ -9,7 +9,7 @@ namespace VMS.Tests.Domain
         [Fact]
         public void Speed_Should_Not_Be_Negative()
         {
-            Assert.Throws<DomainException>(() => new Speed(-1.0f));
+            Assert.Throws<DomainException>(() => new Speed(-1.0));
         }
     }
 }
