@@ -2,20 +2,20 @@
 {
     public class Speed
     {
-        private float kilometresPerHour = 0.0f;
+        private double kilometresPerHour = 0.0;
 
-        public Speed(float kilometresPerHour)
+        public Speed(double kilometresPerHour)
         {
-            if (kilometresPerHour < 0.0f) throw new DomainException("Speed must not be a negative number");
+            if (kilometresPerHour < 0.0) throw new DomainException("Speed must not be a negative number");
             this.kilometresPerHour = kilometresPerHour;
         }
 
-        public static implicit operator float(Speed kilometresPerHour)
+        public static implicit operator double(Speed kilometresPerHour)
         {
             return kilometresPerHour.kilometresPerHour;
         }
 
-        public static implicit operator Speed(float kilometresPerHour)
+        public static implicit operator Speed(double kilometresPerHour)
         {
             return new Speed(kilometresPerHour);
         }
@@ -32,7 +32,7 @@
                 return true;
             }
 
-            return obj is float single ? single == kilometresPerHour : ((Speed)obj).kilometresPerHour == kilometresPerHour;
+            return obj is double single ? single == kilometresPerHour : ((Speed)obj).kilometresPerHour == kilometresPerHour;
         }
     }
 }

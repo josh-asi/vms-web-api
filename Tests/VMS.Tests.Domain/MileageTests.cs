@@ -9,19 +9,19 @@ namespace VMS.Tests.Domain
         [Fact]
         public void Mileage_Should_Only_Be_Increased()
         {
-            var mileage = new Kilometres(100.0f);
-            var newMileage = new Kilometres(120.0f);
+            var mileage = new Kilometres(100.0);
+            var newMileage = new Kilometres(120.0);
 
             mileage.UpdateMileage(newMileage);
             Assert.Equal(newMileage, mileage);
 
-            Assert.Throws<DomainException>(() => mileage.UpdateMileage(90.0f));
+            Assert.Throws<DomainException>(() => mileage.UpdateMileage(90.0));
         }
 
         [Fact]
         public void Mileage_Should_Only_Be_Positive()
         {
-            Assert.Throws<DomainException>(() => new Kilometres(-0.3f));
+            Assert.Throws<DomainException>(() => new Kilometres(-0.3));
         }
     }
 }

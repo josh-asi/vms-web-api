@@ -2,6 +2,7 @@
 
 - [Vehicle Management System](#vehicle-management-system)
   - [Setup](#setup)
+    - [Database](#database)
   - [Architecture](#architecture)
   - [Domain](#domain)
     - [Entity](#entity)
@@ -16,7 +17,6 @@
     - [GetVehicles](#getvehicles)
     - [UpdateMileage](#updatemileage)
     - [DeleteVehicle](#deletevehicle)
-  - [Database](#database)
   - [Technologies Used](#technologies-used)
   - [Client](#client)
   - [References/Inspiration](#referencesinspiration)
@@ -26,6 +26,16 @@
 `git clone https://github.com/josh-asi/vms-web-api`
 
 Open Visual Studio and run the project VMS.Api. Swagger will open by default.
+
+### Database
+
+**Please ensure that a database called VMS is created in (localdb)\MSSQLLocalDB** For a closer look at the schema, please look at **VMS.Infrastructure/Data/Schema**. Each SQL script will have the fields and field types for each table.
+
+To generate the entities\* from the database into Entity Framework entities, in Visual Studio, select menu Tools -> NuGet Package Manger -> Package Manger Console and run the following command:
+
+`Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=VMS;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data/EntityFramework/Entities -f`
+
+\*_Make sure that the Default project is set to VMS.Infrastructure and that Microsoft.EntityFrameworkCore.Tools is installed as a nuget package._
 
 ## Architecture
 
@@ -59,7 +69,7 @@ Property : _Type_
 
 ### Speed (ValueObject)
 
-- -kilometresPerHour : _float_
+- -kilometresPerHour : _double_
 
 ### Location (Entity)
 
@@ -68,15 +78,15 @@ Property : _Type_
 
 ### Latitude (ValueObject)
 
-- -latitude : _float_
+- -latitude : _double_
 
 ### Longitude (ValueObject)
 
-- -longitude : _float_
+- -longitude : _double_
 
 ### Kilometres (ValueObject)
 
-- -kilometres: _float_
+- -kilometres: _double_
 
 ## Use Cases
 
@@ -100,16 +110,6 @@ Updates the mileage for a vehicle.
 
 `DELETE /api/vehicle/{vehicleId}`
 Marks the vehicle as deleted in the database
-
-## Database
-
-**Please ensure that a database called VMS is created in (localdb)\MSSQLLocalDB** For a closer look at the schema, please look at **VMS.Infrastructure/Data/Schema**. Each SQL script will have the fields and field types for each table.
-
-To generate the entities\* from the database into Entity Framework entities, in Visual Studio, select menu Tools -> NuGet Package Manger -> Package Manger Console and run the following command:
-
-`Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=VMS;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data/EntityFramework/Entities -f`
-
-\*_Make sure that the Default project is set to VMS.Infrastructure and that Microsoft.EntityFrameworkCore.Tools is installed as a nuget package._
 
 ## Technologies Used
 
