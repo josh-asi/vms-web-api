@@ -6,7 +6,9 @@
 
   <ItemGroup>
     <Folder Include="Commands\" />
-    <Folder Include="Queries\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="DomainFactories\" />
+    <Folder Include="DTOs\" />
   </ItemGroup>
 
 </Project>
