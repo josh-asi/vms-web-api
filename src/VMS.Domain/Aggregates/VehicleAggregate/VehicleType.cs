@@ -2,8 +2,8 @@
 {
     public enum VehicleType
     {
-        Truck = 0,
-        Bus = 1
+        Truck = 1,
+        Bus = 2
     }
 
     public static class VehicleTypeExtensions
