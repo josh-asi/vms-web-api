@@ -14,6 +14,7 @@
     - [Longitude (ValueObject)](#longitude-valueobject)
     - [Kilometres (ValueObject)](#kilometres-valueobject)
   - [Use Cases](#use-cases)
+    - [AddVehicle](#addvehicle)
     - [GetVehicles](#getvehicles)
     - [UpdateMileage](#updatemileage)
     - [DeleteVehicle](#deletevehicle)
@@ -64,8 +65,8 @@ Property : _Type_
 
 ### VehicleType (ValueObject - enum)
 
-- +Truck - 0
-- +Bus - 1
+- +Truck - 1
+- +Bus - 2
 
 ### Speed (ValueObject)
 
@@ -90,9 +91,17 @@ Property : _Type_
 
 ## Use Cases
 
-- GetVehicles
-- UpdateMileage
+- [AddVehicle](#addvehicle)
+- [GetVehicles](#getvehicles)
+- [UpdateMileage](#updatemileage)
+- [DeleteVehicle](#deletevehicle)
 - AddVehicleLocation _(WIP)_
+
+### AddVehicle
+
+`POST /api/vehicle/`
+
+Adds a new vehicle
 
 ### GetVehicles
 
@@ -102,7 +111,7 @@ Returns all the vehicles available.
 
 ### UpdateMileage
 
-`POST /api/vehicle/{vehicleId}`
+`PUT /api/vehicle/{vehicleId}`
 
 Updates the mileage for a vehicle.
 
