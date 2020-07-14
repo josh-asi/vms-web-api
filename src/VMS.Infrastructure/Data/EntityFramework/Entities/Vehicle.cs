@@ -10,7 +10,6 @@ namespace VMS.Infrastructure.Data.EntityFramework.Entities
         public double Speed { get; set; }
         public int Type { get; set; }
         public double Mileage { get; set; }
-        public DateTime? DeletedDttm { get; set; }
 
         public virtual VehicleType TypeNavigation { get; set; }
     }

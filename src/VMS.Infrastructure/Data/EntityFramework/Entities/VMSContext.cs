@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace VMS.Infrastructure.Data.EntityFramework.Entities
 {
@@ -16,14 +16,14 @@ namespace VMS.Infrastructure.Data.EntityFramework.Entities
         public virtual DbSet<Vehicle> Vehicle { get; set; }
         public virtual DbSet<VehicleType> VehicleType { get; set; }
 
-        //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //        {
-        //            if (!optionsBuilder.IsConfigured)
-        //            {
-        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-        //                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=VMS;Trusted_Connection=True;");
-        //            }
-        //        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=VMS;Trusted_Connection=True;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,10 +33,6 @@ namespace VMS.Infrastructure.Data.EntityFramework.Entities
 
                 entity.Property(e => e.CreatedDttm)
                     .HasColumnName("created_dttm")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.DeletedDttm)
-                    .HasColumnName("deleted_dttm")
                     .HasColumnType("datetime");
 
                 entity.Property(e => e.Mileage).HasColumnName("mileage");
