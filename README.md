@@ -53,7 +53,7 @@ Property : _Type_
 
 ### Speed (ValueObject)
 
-- -speed : _float_
+- -kilometresPerHour : _float_
 
 ### Location (Entity)
 

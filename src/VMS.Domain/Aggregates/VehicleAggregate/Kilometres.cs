@@ -1,5 +1,4 @@
-﻿using System;
-using VMS.Domain.SeedWork;
+﻿using VMS.Domain.SeedWork;
 
 namespace VMS.Domain.Aggregates.VehicleAggregate
 {
@@ -9,12 +8,14 @@ namespace VMS.Domain.Aggregates.VehicleAggregate
 
         public Kilometres(float kilometres)
         {
+            if (kilometres < 0.0f) throw new DomainException("Mileage must not be a negative number");
+
             this.kilometres = kilometres;
         }
 
         public void UpdateMileage(float kilometres)
         {
-            if (kilometres < this.kilometres) throw new InvalidOperationException("The new mileage entered is smaller than the current mileage.");
+            if (kilometres < this.kilometres) throw new DomainException("The new mileage entered is smaller than the current mileage.");
 
             this.kilometres = kilometres;
         }

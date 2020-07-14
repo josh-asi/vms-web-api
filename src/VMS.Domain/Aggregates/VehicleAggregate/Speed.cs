@@ -6,6 +6,7 @@
 
         public Speed(float kilometresPerHour)
         {
+            if (kilometresPerHour < 0.0f) throw new DomainException("Speed must not be a negative number");
             this.kilometresPerHour = kilometresPerHour;
         }
 

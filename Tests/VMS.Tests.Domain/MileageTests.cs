@@ -1,4 +1,4 @@
-﻿using System;
+﻿using VMS.Domain;
 using VMS.Domain.Aggregates.VehicleAggregate;
 using Xunit;
 
@@ -15,7 +15,13 @@ namespace VMS.Tests.Domain
             mileage.UpdateMileage(newMileage);
             Assert.Equal(newMileage, mileage);
 
-            Assert.Throws<InvalidOperationException>(() => mileage.UpdateMileage(90.0f));
+            Assert.Throws<DomainException>(() => mileage.UpdateMileage(90.0f));
+        }
+
+        [Fact]
+        public void Mileage_Should_Only_Be_Positive()
+        {
+            Assert.Throws<DomainException>(() => new Kilometres(-0.3f));
         }
     }
 }
