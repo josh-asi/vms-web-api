@@ -12,5 +12,10 @@
         {
             return (VehicleType)type;
         }
+
+        public static string ToFriendlyString(this VehicleType code)
+        {
+            return System.Enum.GetName(code.GetType(), code);
+        }
     }
 }
