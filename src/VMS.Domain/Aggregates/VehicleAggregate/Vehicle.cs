@@ -9,8 +9,9 @@ namespace VMS.Domain.Aggregates.VehicleAggregate
         public Kilometres Mileage { get; private set; }
         public Location Location { get; private set; }
 
-        public Vehicle(VehicleType vehicleType, Speed speed, Kilometres mileage)
+        public Vehicle(int id, VehicleType vehicleType, Speed speed, Kilometres mileage)
         {
+            Id = id;
             VehicleType = vehicleType;
             Speed = speed;
             Mileage = mileage;

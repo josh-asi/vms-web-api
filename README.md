@@ -4,6 +4,7 @@
   - [Setup](#setup)
   - [Architecture](#architecture)
   - [Domain](#domain)
+    - [Entity](#entity)
     - [Vehicle (Aggregate Root, Entity)](#vehicle-aggregate-root-entity)
     - [VehicleType (ValueObject - enum)](#vehicletype-valueobject---enum)
     - [Speed (ValueObject)](#speed-valueobject)
@@ -37,6 +38,10 @@ I have tried to implement the **Ports and Adapter Pattern/Hexagonal Architecture
 ## Domain
 
 Property : _Type_
+
+### Entity
+
+- +Id : _int_
 
 ### Vehicle (Aggregate Root, Entity)
 
