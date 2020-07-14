@@ -4,8 +4,7 @@
 	[speed] FLOAT NOT NULL,
 	[type] INT NOT NULL,
 	[mileage] FLOAT NOT NULL,
-	[deleted_dttm] DATETIME NULL,
-	[deleted_by] INT NULL,
+	[deleted_dttm] DATETIME NULL
  CONSTRAINT [PK_Vehicle] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC

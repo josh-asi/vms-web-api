@@ -15,7 +15,8 @@
   - [Use Cases](#use-cases)
     - [GetVehicles](#getvehicles)
     - [UpdateMileage](#updatemileage)
-  - [Database Schema](#database-schema)
+    - [DeleteVehicle](#deletevehicle)
+  - [Database](#database)
   - [Technologies Used](#technologies-used)
   - [Client](#client)
   - [References/Inspiration](#referencesinspiration)
@@ -95,9 +96,20 @@ Returns all the vehicles available.
 
 Updates the mileage for a vehicle.
 
-## Database Schema
+### DeleteVehicle
 
-For a closer look, please look at **VMS.Infrastructure/Data/Schema**. Each SQL script will have the fields and field types for each table.
+`DELETE /api/vehicle/{vehicleId}`
+Marks the vehicle as deleted in the database
+
+## Database
+
+**Please ensure that a database called VMS is created in (localdb)\MSSQLLocalDB** For a closer look at the schema, please look at **VMS.Infrastructure/Data/Schema**. Each SQL script will have the fields and field types for each table.
+
+To generate the entities\* from the database into Entity Framework entities, in Visual Studio, select menu Tools -> NuGet Package Manger -> Package Manger Console and run the following command:
+
+`Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=VMS;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data/EntityFramework/Entities -f`
+
+\*_Make sure that the Default project is set to VMS.Infrastructure and that Microsoft.EntityFrameworkCore.Tools is installed as a nuget package._
 
 ## Technologies Used
 
