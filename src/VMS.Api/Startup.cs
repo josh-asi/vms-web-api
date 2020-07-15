@@ -10,6 +10,7 @@ using VMS.Application.Commands.AddVehicle;
 using VMS.Application.Queries;
 using VMS.Application.Repositories;
 using VMS.Application.UnitOfWork;
+using VMS.Application.UseCases.DeleteVehicle;
 using VMS.Infrastructure.Data.EntityFramework.Entities;
 using VMS.Infrastructure.Data.EntityFramework.Queries;
 using VMS.Infrastructure.Data.EntityFramework.Repositories;
@@ -41,6 +42,7 @@ namespace VMS.Api
 
             // Commands
             services.AddScoped<IAddVehicleUseCase, AddVehicleUseCase>();
+            services.AddScoped<IDeleteVehicleUseCase, DeleteVehicleUseCase>();
 
             // Queries
             services.AddScoped<IVehicleQueries, VehicleQueries>();

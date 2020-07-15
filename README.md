@@ -124,7 +124,7 @@ Updates the mileage for a vehicle.
 ### DeleteVehicle
 
 `DELETE /api/vehicle/{vehicleId}`
-Marks the vehicle as deleted in the database
+Removes the vehicle from the records
 
 ## Technologies Used
 
