@@ -32,6 +32,7 @@ namespace VMS.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
 
             services.AddSwaggerGen(c =>
             {
@@ -68,6 +69,7 @@ namespace VMS.Api
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(options => options.WithOrigins("http://localhost:3000").AllowAnyMethod());
 
             app.UseRouting();
 
