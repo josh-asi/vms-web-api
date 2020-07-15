@@ -16,5 +16,12 @@ namespace VMS.Domain.Aggregates.VehicleAggregate
             Speed = speed;
             Mileage = mileage;
         }
+
+        public Vehicle(VehicleType vehicleType, Speed speed, Kilometres mileage)
+        {
+            VehicleType = vehicleType;
+            Speed = speed;
+            Mileage = mileage;
+        }
     }
 }

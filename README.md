@@ -101,7 +101,13 @@ Property : _Type_
 
 `POST /api/vehicle/`
 
-Adds a new vehicle
+Adds a new vehicle.
+
+Required Parameters:
+
+- Type : _int_
+- Speed : _double_
+- Mileage: _double_
 
 ### GetVehicles
 

@@ -5,7 +5,7 @@ using VMS.Application.Queries;
 
 namespace VMS.Api.UseCases.GetVehicles
 {
-    [Route("api/vehicles")]
+    [Route("api/Vehicles")]
     [ApiController]
     public class VehicleController : ControllerBase
     {
