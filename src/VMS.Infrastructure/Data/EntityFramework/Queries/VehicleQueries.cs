@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VMS.Application.DTOs;
 using VMS.Application.DTOs.Vehicle;
 using VMS.Application.Queries;
 using VMS.Infrastructure.Data.EntityFramework.Entities;
@@ -25,6 +26,15 @@ namespace VMS.Infrastructure.Data.EntityFramework.Queries
                 Mileage = v.Mileage,
                 Speed = v.Speed,
                 Type = v.TypeNavigation.Description
+            }).ToArrayAsync();
+        }
+
+        public async Task<IEnumerable<VehicleTypeDTO>> GetAllVehicleTypesAsync()
+        {
+            return await context.VehicleType.Select(v => new VehicleTypeDTO
+            {
+                Id = v.Id,
+                Description = v.Description
             }).ToArrayAsync();
         }
     }
