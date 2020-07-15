@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="DomainFactories\" />
-    <Folder Include="DTOs\" />
   </ItemGroup>
 
   <ItemGroup>

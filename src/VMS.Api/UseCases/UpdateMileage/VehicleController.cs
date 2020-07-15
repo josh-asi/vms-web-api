@@ -17,7 +17,7 @@ namespace VMS.Api.UseCases.UpdateMileage
             this.updateMileageService = updateMileageService;
         }
 
-        [HttpPut, Route("mileage")]
+        [HttpPut, Route("Mileage")]
         public async Task<ActionResult> UpdateMileageAsync([FromBody] UpdateMileageRequest request)
         {
             try
