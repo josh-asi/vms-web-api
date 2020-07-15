@@ -121,6 +121,10 @@ Returns all the vehicles available.
 
 Updates the mileage for a vehicle.
 
+Required Parameter:
+
+- Mileage : _double_
+
 ### DeleteVehicle
 
 `DELETE /api/vehicle/{vehicleId}`
