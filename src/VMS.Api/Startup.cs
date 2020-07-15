@@ -1,13 +1,20 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using VMS.Application.Commands.AddVehicle;
 using VMS.Application.Queries;
+using VMS.Application.Repositories;
+using VMS.Application.UnitOfWork;
 using VMS.Infrastructure.Data.EntityFramework.Entities;
 using VMS.Infrastructure.Data.EntityFramework.Queries;
+using VMS.Infrastructure.Data.EntityFramework.Repositories;
+using VMS.Infrastructure.Data.EntityFramework.UnitOfWork;
+using VMS.Infrastructure.Mapping;
 
 namespace VMS.Api
 {
@@ -32,7 +39,21 @@ namespace VMS.Api
             var connectionString = Configuration.GetConnectionString("VMS_DB");
             services.AddDbContext<VMSContext>(options => options.UseSqlServer(connectionString));
 
+            // Commands
+            services.AddScoped<IAddVehicleUseCase, AddVehicleUseCase>();
+
+            // Queries
             services.AddScoped<IVehicleQueries, VehicleQueries>();
+
+            // Unit of Work
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // Repositories
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
+
+            // Automapper
+            IMapper mapper = AutoMapperConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

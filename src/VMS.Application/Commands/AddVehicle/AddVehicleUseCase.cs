@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using AutoMapper;
+using System.Threading.Tasks;
 using VMS.Application.DTOs.Vehicle;
-using VMS.Application.Mapping;
 using VMS.Application.UnitOfWork;
 using VMS.Domain.Aggregates.VehicleAggregate;
 
@@ -9,9 +9,9 @@ namespace VMS.Application.Commands.AddVehicle
     public class AddVehicleUseCase : IAddVehicleUseCase
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper<Vehicle, VehicleDTO> mapper;
+        private readonly IMapper mapper;
 
-        public AddVehicleUseCase(IUnitOfWork unitOfWork, IMapper<Vehicle, VehicleDTO> mapper)
+        public AddVehicleUseCase(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
@@ -22,7 +22,7 @@ namespace VMS.Application.Commands.AddVehicle
             var newVehicle = new Vehicle(type.ToVehicleType(), new Speed(speed), new Kilometres(mileage));
             var vehicleId = await unitOfWork.VehicleRepository.AddAsync(newVehicle);
             newVehicle.Id = vehicleId;
-            return mapper.Map(newVehicle);
+            return mapper.Map<VehicleDTO>(newVehicle);
         }
     }
 }

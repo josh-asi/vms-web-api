@@ -27,6 +27,7 @@ namespace VMS.Infrastructure.Data.EntityFramework.Repositories
                 Type = (int)vehicle.VehicleType
             };
 
+            context.Add(newVehicle);
             await context.SaveChangesAsync();
             return newVehicle.Id;
         }
