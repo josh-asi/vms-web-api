@@ -117,12 +117,13 @@ Returns all the vehicles available.
 
 ### UpdateMileage
 
-`PUT /api/vehicle/{vehicleId}`
+`PUT /api/vehicle/mileage/`
 
 Updates the mileage for a vehicle.
 
-Required Parameter:
+Required Parameters:
 
+- VehicleId : _int_
 - Mileage : _double_
 
 ### DeleteVehicle

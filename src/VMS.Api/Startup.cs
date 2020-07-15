@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using VMS.Application.Commands.AddVehicle;
+using VMS.Application.Commands.UpdateMileage;
 using VMS.Application.Queries;
 using VMS.Application.Repositories;
 using VMS.Application.UnitOfWork;
@@ -43,6 +44,7 @@ namespace VMS.Api
             // Commands
             services.AddScoped<IAddVehicleUseCase, AddVehicleUseCase>();
             services.AddScoped<IDeleteVehicleUseCase, DeleteVehicleUseCase>();
+            services.AddScoped<IUpdateMileageUseCase, UpdateMileageUseCase>();
 
             // Queries
             services.AddScoped<IVehicleQueries, VehicleQueries>();
