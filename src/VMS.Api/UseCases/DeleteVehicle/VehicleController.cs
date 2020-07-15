@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using VMS.Application.Repositories;
 using VMS.Application.UseCases.DeleteVehicle;
 using ApplicationException = VMS.Application.Exceptions.ApplicationException;
 
@@ -23,6 +24,10 @@ namespace VMS.Api.UseCases.DeleteVehicle
             {
                 await deleteVehicleService.Execute(vehicleId);
                 return Ok(vehicleId);
+            }
+            catch (RecordNotFoundException e)
+            {
+                return NotFound(e.Message);
             }
             catch (ApplicationException e)
             {

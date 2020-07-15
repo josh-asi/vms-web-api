@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using VMS.Application.Exceptions;
+using VMS.Application.Repositories;
 using VMS.Application.UnitOfWork;
 
 namespace VMS.Application.UseCases.DeleteVehicle
@@ -19,10 +20,17 @@ namespace VMS.Application.UseCases.DeleteVehicle
             {
                 await unitOfWork.VehicleRepository.DeleteAsync(vehicleId);
             }
+            catch (RecordNotFoundException e)
+            {
+                throw e;
+            }
             catch
             {
+                throw new ApplicationException("Failed to delete task");
+            }
+            finally
+            {
                 await unitOfWork.RollBackAsync();
-                throw new ApplicationException("Failed to delete vehicle.");
             }
 
             await unitOfWork.CommitAsync();

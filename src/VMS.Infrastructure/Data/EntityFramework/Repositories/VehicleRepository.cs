@@ -35,6 +35,10 @@ namespace VMS.Infrastructure.Data.EntityFramework.Repositories
         public async Task DeleteAsync(int id)
         {
             var vehicleToBeDeleted = await GetVehicleEntityAsync(id);
+
+            if (vehicleToBeDeleted == null)
+                throw new RecordNotFoundException("This vehicle does not exist.");
+
             context.Vehicle.Remove(vehicleToBeDeleted);
         }
 
@@ -51,6 +55,9 @@ namespace VMS.Infrastructure.Data.EntityFramework.Repositories
         public async Task UpdateAsync(Vehicle vehicle)
         {
             var vehicleToUpdate = await GetVehicleEntityAsync(vehicle.Id);
+
+            if (vehicleToUpdate == null)
+                throw new RecordNotFoundException("This vehicle does not exist.");
 
             vehicleToUpdate.Mileage = vehicle.Mileage;
             vehicleToUpdate.Speed = vehicle.Speed;
