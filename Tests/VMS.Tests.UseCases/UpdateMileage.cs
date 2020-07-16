@@ -27,7 +27,7 @@ namespace VMS.Tests.UseCases
             var result = await updateMileageUseCase.Execute(vehicleId, newMileage);
 
             Assert.Equal(vehicleId, result.VehicleId);
-            Assert.Equal(newMileage, result.Mileage);
+            Assert.Equal(newMileage, result.NewMileage);
         }
 
         [Fact]

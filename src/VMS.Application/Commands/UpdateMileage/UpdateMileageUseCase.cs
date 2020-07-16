@@ -21,12 +21,13 @@ namespace VMS.Application.Commands.UpdateMileage
 
             vehicle.Mileage.UpdateMileage(newMileage);
 
+            await unitOfWork.VehicleRepository.UpdateAsync(vehicle);
             await unitOfWork.CommitAsync();
 
             return new UpdateMileageResult
             {
                 VehicleId = vehicle.Id,
-                Mileage = vehicle.Mileage
+                NewMileage = vehicle.Mileage
             };
         }
     }

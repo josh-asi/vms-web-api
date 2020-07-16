@@ -117,7 +117,7 @@ Returns all the vehicles available.
 
 ### UpdateMileage
 
-`PUT /api/vehicle/mileage/`
+`PATCH /api/vehicle/mileage/`
 
 Updates the mileage for a vehicle.
 

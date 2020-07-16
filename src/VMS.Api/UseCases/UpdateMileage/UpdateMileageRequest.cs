@@ -8,6 +8,6 @@ namespace VMS.Api.UseCases.UpdateMileage
         [Required]
         public int VehicleId { get; set; }
         [Required]
-        public double NewMilleage { get; set; }
+        public double NewMileage { get; set; }
     }
 }

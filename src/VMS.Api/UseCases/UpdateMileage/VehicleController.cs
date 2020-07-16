@@ -17,12 +17,12 @@ namespace VMS.Api.UseCases.UpdateMileage
             this.updateMileageService = updateMileageService;
         }
 
-        [HttpPut, Route("Mileage")]
+        [HttpPatch, Route("Mileage")]
         public async Task<ActionResult> UpdateMileageAsync([FromBody] UpdateMileageRequest request)
         {
             try
             {
-                return Ok(await updateMileageService.Execute(request.VehicleId, request.NewMilleage));
+                return Ok(await updateMileageService.Execute(request.VehicleId, request.NewMileage));
             }
             catch (RecordNotFoundException e)
             {
