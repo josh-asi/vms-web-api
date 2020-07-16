@@ -22,15 +22,13 @@ namespace VMS.Application.UseCases.DeleteVehicle
             }
             catch (RecordNotFoundException e)
             {
+                await unitOfWork.RollBackAsync();
                 throw e;
             }
             catch
             {
-                throw new ApplicationException("Failed to delete task");
-            }
-            finally
-            {
                 await unitOfWork.RollBackAsync();
+                throw new ApplicationException("Failed to delete task");
             }
 
             await unitOfWork.CommitAsync();
