@@ -66,10 +66,13 @@ namespace VMS.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(options => options.WithOrigins("http://localhost:3000")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader()
+                                .AllowCredentials());
             }
 
             app.UseHttpsRedirection();
-            app.UseCors(options => options.WithOrigins("http://localhost:3000").AllowAnyMethod());
 
             app.UseRouting();
 
