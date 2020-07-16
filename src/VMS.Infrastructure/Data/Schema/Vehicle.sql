@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Vehicle](
-	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id] INT IDENTITY(1,1) NOT NULL,
 	[created_dttm] DATETIME NOT NULL,
 	[speed] FLOAT NOT NULL,
 	[type] INT NOT NULL,
@@ -9,3 +9,5 @@
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
+ALTER TABLE dbo.Vehicle ADD CONSTRAINT [FK_Vehicle_ToVehicleType] FOREIGN KEY ([type]) REFERENCES [dbo].[VehicleType]([id])
