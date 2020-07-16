@@ -40,6 +40,7 @@ namespace VMS.Api
             });
 
             var connectionString = Configuration.GetConnectionString("VMS_DB");
+            services.AddHealthChecks().AddDbContextCheck<VMSContext>();
             services.AddDbContext<VMSContext>(options => options.UseSqlServer(connectionString));
 
             // Commands
@@ -85,6 +86,7 @@ namespace VMS.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
         }
     }

@@ -38,6 +38,8 @@ To generate the entities\* from the database into Entity Framework entities, in 
 
 \*_Make sure that the Default project is set to VMS.Infrastructure and that Microsoft.EntityFrameworkCore.Tools is installed as a nuget package._
 
+To check if the connection has been configured properly, please navigate to https://localhost:5001/health once the server is running.
+
 ## Architecture
 
 I have tried to implement the **Ports and Adapter Pattern/Hexagonal Architecture**.
