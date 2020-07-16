@@ -16,6 +16,7 @@
   - [Use Cases](#use-cases)
     - [AddVehicle](#addvehicle)
     - [GetVehicles](#getvehicles)
+    - [GetVehicleTypes](#getvehicletypes)
     - [UpdateMileage](#updatemileage)
     - [DeleteVehicle](#deletevehicle)
   - [Technologies Used](#technologies-used)
@@ -26,19 +27,21 @@
 
 `git clone https://github.com/josh-asi/vms-web-api`
 
-Open Visual Studio and run the project VMS.Api. Swagger will open by default.
+Open VMS.sln using Visual Studio and create a VMS database via the SQL Server Object Explorer. Run the ClearData.sql script found in VMS.Infrastucture/Data/Schema to populate the tables.
+
+Run the project VMS.Api. Swagger will open by default.
 
 ### Database
 
-**Please ensure that a database called VMS is created in (localdb)\MSSQLLocalDB** For a closer look at the schema, please look at **VMS.Infrastructure/Data/Schema**. Each SQL script will have the fields and field types for each table.
+**Please ensure that a database called VMS is created in (localdb)\MSSQLLocalDB**. For a closer look at the schema, please look at **VMS.Infrastructure/Data/Schema**. Each SQL script will have the fields and field types for each table.
 
-To generate the entities\* from the database into Entity Framework entities, in Visual Studio, select menu Tools -> NuGet Package Manger -> Package Manger Console and run the following command:
+If there are no entities found in VMS.Infrastructure/Data/EntityFramework/Entities, to generate them\* from the database entities into Entity Framework entities, in Visual Studio, select menu Tools -> NuGet Package Manger -> Package Manger Console and run the following command:
 
 `Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=VMS;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data/EntityFramework/Entities -f`
 
-\*_Make sure that the Default project is set to VMS.Infrastructure and that Microsoft.EntityFrameworkCore.Tools is installed as a nuget package._
-
 To check if the connection has been configured properly, please navigate to https://localhost:5001/health once the server is running.
+
+\*_Make sure that the Default project is set to VMS.Infrastructure and that Microsoft.EntityFrameworkCore.Tools is installed as a nuget package._
 
 ## Architecture
 
@@ -95,13 +98,13 @@ Property : _Type_
 
 - [AddVehicle](#addvehicle)
 - [GetVehicles](#getvehicles)
+- [GetVehicleTypes](#getvehicletypes)
 - [UpdateMileage](#updatemileage)
 - [DeleteVehicle](#deletevehicle)
-- AddVehicleLocation _(WIP)_
 
 ### AddVehicle
 
-`POST /api/vehicle/`
+`POST /api/vehicle`
 
 Adds a new vehicle.
 
@@ -115,22 +118,29 @@ Required Parameters:
 
 `GET /api/vehicles`
 
-Returns all the vehicles available.
+Returns all the vehicles available
+
+### GetVehicleTypes
+
+`GET /api/vehicle/types`
+
+Returns a list of all the vehicle types
 
 ### UpdateMileage
 
-`PATCH /api/vehicle/mileage/`
+`PATCH /api/vehicle/mileage`
 
-Updates the mileage for a vehicle.
+Updates the mileage for a vehicle. It only successfully updates the mileage if it's greater than or equal to the current mileage
 
 Required Parameters:
 
 - VehicleId : _int_
-- Mileage : _double_
+- NewMileage : _double_
 
 ### DeleteVehicle
 
 `DELETE /api/vehicle/{vehicleId}`
+
 Removes the vehicle from the records
 
 ## Technologies Used
